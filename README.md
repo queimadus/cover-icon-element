@@ -1,6 +1,6 @@
 # Cover-icon-element
 
-Improved cover icon for home assistant picture element
+Improved cover icon for home assistant's picture-element which visually displays the cover's position.
 
 ![element-states](cover-icon-element.jpg)
 
