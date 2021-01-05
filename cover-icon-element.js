@@ -1,14 +1,4 @@
-class CoverIconElement extends Polymer.Element {
-
-  static dataImage4 = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%234d4d4d' preserveAspectRatio='xMidYMid meet' focusable='false' viewBox='0 0 24 24'%3E%3Cg%3E%3Cpath d='M3 4H21V8H19V20H17V8H7V20H5V8H3V4'%3E%3C/path%3E%3Cpath d='M3 9H16V11H8V9' opacity='1'%3E%3C/path%3E%3Cpath d='M3 12H16V14H8V12' opacity='1'%3E%3C/path%3E%3Cpath d='M3 15H16V17H8V15' opacity='1'%3E%3C/path%3E%3Cpath d='M3 18H16V20H8V18' opacity='1'%3E%3C/path%3E%3C/g%3E%3C/svg%3E";
-
-  static dataImage3 = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%234d4d4d' preserveAspectRatio='xMidYMid meet' focusable='false' viewBox='0 0 24 24'%3E%3Cg%3E%3Cpath d='M3 4H21V8H19V20H17V8H7V20H5V8H3V4'%3E%3C/path%3E%3Cpath d='M3 9H16V11H8V9' opacity='1'%3E%3C/path%3E%3Cpath d='M3 12H16V14H8V12' opacity='1'%3E%3C/path%3E%3Cpath d='M3 15H16V17H8V15' opacity='1'%3E%3C/path%3E%3Cpath d='M3 18H16V20H8V18' opacity='0.3'%3E%3C/path%3E%3C/g%3E%3C/svg%3E";
-
-  static dataImage2 = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%234d4d4d' preserveAspectRatio='xMidYMid meet' focusable='false' viewBox='0 0 24 24'%3E%3Cg%3E%3Cpath d='M3 4H21V8H19V20H17V8H7V20H5V8H3V4'%3E%3C/path%3E%3Cpath d='M3 9H16V11H8V9' opacity='1'%3E%3C/path%3E%3Cpath d='M3 12H16V14H8V12' opacity='1'%3E%3C/path%3E%3Cpath d='M3 15H16V17H8V15' opacity='0.3'%3E%3C/path%3E%3Cpath d='M3 18H16V20H8V18' opacity='0.3'%3E%3C/path%3E%3C/g%3E%3C/svg%3E";
-
-  static dataImage1 = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%234d4d4d' preserveAspectRatio='xMidYMid meet' focusable='false' viewBox='0 0 24 24'%3E%3Cg%3E%3Cpath d='M3 4H21V8H19V20H17V8H7V20H5V8H3V4'%3E%3C/path%3E%3Cpath d='M3 9H16V11H8V9' opacity='1'%3E%3C/path%3E%3Cpath d='M3 12H16V14H8V12' opacity='0.3'%3E%3C/path%3E%3Cpath d='M3 15H16V17H8V15' opacity='0.3'%3E%3C/path%3E%3Cpath d='M3 18H16V20H8V18' opacity='0.3'%3E%3C/path%3E%3C/g%3E%3C/svg%3E";
-
-  static dataImage0 = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%234d4d4d' preserveAspectRatio='xMidYMid meet' focusable='false' viewBox='0 0 24 24'%3E%3Cg%3E%3Cpath d='M3 4H21V8H19V20H17V8H7V20H5V8H3V4'%3E%3C/path%3E%3Cpath d='M3 9H16V11H8V9' opacity='0.3'%3E%3C/path%3E%3Cpath d='M3 12H16V14H8V12' opacity='0.3'%3E%3C/path%3E%3Cpath d='M3 15H16V17H8V15' opacity='0.3'%3E%3C/path%3E%3Cpath d='M3 18H16V20H8V18' opacity='0.3'%3E%3C/path%3E%3C/g%3E%3C/svg%3E";
+class CoverIconElement extends HTMLElement {
 
   setImage(hass) {
     if (hass && this._config) {
@@ -55,5 +45,15 @@ class CoverIconElement extends Polymer.Element {
     this.setImage(hass);
   }
 }
+
+CoverIconElement.dataImage4 = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%234d4d4d' preserveAspectRatio='xMidYMid meet' focusable='false' viewBox='0 0 24 24'%3E%3Cg%3E%3Cpath d='M3 4H21V8H19V20H17V8H7V20H5V8H3V4'%3E%3C/path%3E%3Cpath d='M3 9H16V11H8V9' opacity='1'%3E%3C/path%3E%3Cpath d='M3 12H16V14H8V12' opacity='1'%3E%3C/path%3E%3Cpath d='M3 15H16V17H8V15' opacity='1'%3E%3C/path%3E%3Cpath d='M3 18H16V20H8V18' opacity='1'%3E%3C/path%3E%3C/g%3E%3C/svg%3E";
+
+CoverIconElement.dataImage3 = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%234d4d4d' preserveAspectRatio='xMidYMid meet' focusable='false' viewBox='0 0 24 24'%3E%3Cg%3E%3Cpath d='M3 4H21V8H19V20H17V8H7V20H5V8H3V4'%3E%3C/path%3E%3Cpath d='M3 9H16V11H8V9' opacity='1'%3E%3C/path%3E%3Cpath d='M3 12H16V14H8V12' opacity='1'%3E%3C/path%3E%3Cpath d='M3 15H16V17H8V15' opacity='1'%3E%3C/path%3E%3Cpath d='M3 18H16V20H8V18' opacity='0.3'%3E%3C/path%3E%3C/g%3E%3C/svg%3E";
+
+CoverIconElement.dataImage2 = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%234d4d4d' preserveAspectRatio='xMidYMid meet' focusable='false' viewBox='0 0 24 24'%3E%3Cg%3E%3Cpath d='M3 4H21V8H19V20H17V8H7V20H5V8H3V4'%3E%3C/path%3E%3Cpath d='M3 9H16V11H8V9' opacity='1'%3E%3C/path%3E%3Cpath d='M3 12H16V14H8V12' opacity='1'%3E%3C/path%3E%3Cpath d='M3 15H16V17H8V15' opacity='0.3'%3E%3C/path%3E%3Cpath d='M3 18H16V20H8V18' opacity='0.3'%3E%3C/path%3E%3C/g%3E%3C/svg%3E";
+
+CoverIconElement.dataImage1 = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%234d4d4d' preserveAspectRatio='xMidYMid meet' focusable='false' viewBox='0 0 24 24'%3E%3Cg%3E%3Cpath d='M3 4H21V8H19V20H17V8H7V20H5V8H3V4'%3E%3C/path%3E%3Cpath d='M3 9H16V11H8V9' opacity='1'%3E%3C/path%3E%3Cpath d='M3 12H16V14H8V12' opacity='0.3'%3E%3C/path%3E%3Cpath d='M3 15H16V17H8V15' opacity='0.3'%3E%3C/path%3E%3Cpath d='M3 18H16V20H8V18' opacity='0.3'%3E%3C/path%3E%3C/g%3E%3C/svg%3E";
+
+CoverIconElement.dataImage0 = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%234d4d4d' preserveAspectRatio='xMidYMid meet' focusable='false' viewBox='0 0 24 24'%3E%3Cg%3E%3Cpath d='M3 4H21V8H19V20H17V8H7V20H5V8H3V4'%3E%3C/path%3E%3Cpath d='M3 9H16V11H8V9' opacity='0.3'%3E%3C/path%3E%3Cpath d='M3 12H16V14H8V12' opacity='0.3'%3E%3C/path%3E%3Cpath d='M3 15H16V17H8V15' opacity='0.3'%3E%3C/path%3E%3Cpath d='M3 18H16V20H8V18' opacity='0.3'%3E%3C/path%3E%3C/g%3E%3C/svg%3E";
 
 customElements.define('cover-icon-element', CoverIconElement);
