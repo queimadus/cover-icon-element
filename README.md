@@ -2,15 +2,10 @@
 
 Improved cover icon for home assistant's picture-element which visually displays the cover's position.
 
-![element-states](cover-icon-element.jpg)
+![element-states](https://github.com/queimadus/cover-icon-element/blob/main/cover-icon-element.jpg)
 
 ### Instalation
-Add this repo to `HACS` and then go to `Configuration > Lovelace Dashboard > Resources` and add a new resource:
-
-```
-URL: /hacsfiles/cover-icon-element/cover-icon-element.js
-Resource Type: Javascript Module
-```
+Add this repo to `HACS` as a custom repository and install it. You're all set!
 
 ### Usage
 
