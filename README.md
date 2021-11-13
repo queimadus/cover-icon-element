@@ -5,7 +5,8 @@ Improved cover icon for home assistant's picture-element which visually displays
 ![element-states](https://github.com/queimadus/cover-icon-element/blob/main/cover-icon-element.jpg)
 
 ### Instalation
-Add this repo to `HACS` as a custom repository and install it. You're all set!
+It's recommended to install this via [HACS](https://github.com/custom-components/hacs).
+This repository is part of the defaults and can be found by searching for `cover-icon-element`.
 
 ### Usage
 
