@@ -1,8 +1,12 @@
 class CoverIconElement extends HTMLElement {
 
+  defaults = {
+    breakpoints: [1, 50, 75, 100]
+  }
+
   setImage(hass) {
     if (hass && this._config) {
-      let image = CoverIconElement.dataImage0;
+      let image = CoverIconElement.dataImage4;
 
       if (this._config.entity) {
         const stateObj = hass.states[this._config.entity];
@@ -12,16 +16,16 @@ class CoverIconElement extends HTMLElement {
 
           if (state === "closing") {
             image = CoverIconElement.dataImageClosing;
-	  } else if(state === "opening") {
+          } else if(state === "opening") {
             image = CoverIconElement.dataImageOpening;
-	  } else if (position === 0) {
-            image = CoverIconElement.dataImage4;
-          } else if (position > 0 && position <= 50) {
-            image = CoverIconElement.dataImage3;
-          } else if (position > 50 && position <= 77) {
-            image = CoverIconElement.dataImage2;
-          } else if (position > 77 && position <= 99) {
+          } else if (position >= this._config.breakpoints[3]) {
+            image = CoverIconElement.dataImage0;
+          } else if (position >= this._config.breakpoints[2]) {
             image = CoverIconElement.dataImage1;
+          } else if (position >= this._config.breakpoints[1]) {
+            image = CoverIconElement.dataImage2;
+          } else if (position >= this._config.breakpoints[0]) {
+            image = CoverIconElement.dataImage3;
           }
         }
       }
@@ -36,12 +40,31 @@ class CoverIconElement extends HTMLElement {
     }
   }
 
-  async setConfig(config) {
+  validateConfig(oldConfig) {
+    const config = {...this.defaults, ...oldConfig};
+
+    if (!(Array.isArray(config.breakpoints) && config.breakpoints.length === 4)) {
+      throw new Error("Config 'breakpoints' must be an 4 element number array");
+    } else {
+      config.breakpoints.reduce((prev, curr) => {
+        if (prev >= curr) {
+          throw new Error("Config 'breakpoints' elements must be sorted in ascending order");
+        }
+      })
+    }
+
+    return config;
+  }
+
+  setConfig(config) {
     if (!this.img) {
       this.img = document.createElement('hui-image-element');
       this.appendChild(this.img);
     }
-    this._config = config;
+
+    const configWithDefaults = this.validateConfig(config);
+
+    this._config = configWithDefaults;
     this.setImage();
   }
 

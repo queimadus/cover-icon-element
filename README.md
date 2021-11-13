@@ -22,3 +22,12 @@ elements:
 image: /local/images/floorplan.svg
 type: picture-elements
 ```
+
+### Options
+
+| Name              | Type    | Requirement  | Description                                 | Default             |
+| ----------------- | ------- | ------------ | ------------------------------------------- | ------------------- |
+| type              | string  | **Required** | `custom:cover-icon-element`                 |                     |
+| entity            | string  | **Required** | Home Assistant cover entity ID.             |                     |
+| breakpoints       | array   | **Optional** | Sorted array of 4 elements which maps a cover's position to the number of bars shown in the Icon. <br /> <pre>     0 - arr[0] => 4 bars <br/>arr[0] - arr[1] => 3 bars<br/>arr[1] - arr[2] => 2 bars<br/>arr[2] - arr[3] => 1 bars<br/>arr[3] - 100    => 0 bars</pre>    | `[1, 50, 75, 100]`    |
+| style             | object  | **Optional** | CSS style properties to apply               |                     | 
