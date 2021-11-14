@@ -4,7 +4,7 @@ Improved cover icon for home assistant's picture-element which visually displays
 
 ![element-states](https://github.com/queimadus/cover-icon-element/blob/main/cover-icon-element.jpg)
 
-### Instalation
+### Installation
 It's recommended to install this via [HACS](https://github.com/custom-components/hacs).
 This repository is part of the defaults and can be found by searching for `cover-icon-element`.
 
@@ -15,6 +15,24 @@ Use it as a custom element inside a `picture-elements`.
 elements:
    - type: 'custom:cover-icon-element'
      entity: cover.my_cover
+     style:
+       left: 50%
+       top: 50%
+       width: 10%
+image: /local/images/floorplan.svg
+type: picture-elements
+```
+If you want to include the (optional) breakpoints and color options:
+```
+elements:
+   - type: 'custom:cover-icon-element'
+     entity: cover.my_cover
+     color: gold
+     breakpoints:
+       - 16
+       - 50
+       - 75
+       - 95
      style:
        left: 50%
        top: 50%
