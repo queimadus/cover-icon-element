@@ -35,6 +35,9 @@ class CoverIconElement extends HTMLElement {
         this.prevImage = image;
         this.img.setConfig({
           ...this._config,
+          // We need to set a non false-ish filter, otherwise the hui-image's
+          // DEFAULT_FILTER (greyscale(100%)) gets applied when entity state is 'off'
+          filter: this._config.filter || " ",
           image: image
         });
       }
