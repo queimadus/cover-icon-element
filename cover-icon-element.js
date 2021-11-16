@@ -3,7 +3,7 @@ class CoverIconElement extends HTMLElement {
   defaults = {
     breakpoints: [1, 50, 75, 100],
     color: "#4d4d4d",
-    opacity: '0.3'
+    opacity: 0.3
   }
 
   setImage(hass) {
