@@ -50,5 +50,5 @@ type: picture-elements
 | entity            | string  | **Required** | Home Assistant cover entity ID              |                     |
 | breakpoints       | array   | **Optional** | Sorted array of 4 elements which maps a cover's position to the number of bars shown in the Icon. <br /> <pre>     0 <= pos < arr[0] -> 4 bars <br/>arr[0] <= pos < arr[1] -> 3 bars<br/>arr[1] <= pos < arr[2] -> 2 bars<br/>arr[2] <= pos < arr[3] -> 1 bars<br/>arr[3] <= pos <= 100   -> 0 bars</pre>    | `[1, 50, 75, 100]`    |
 | color             | string  | **Optional** | Sets the base Icon color                    | `"#4d4d4d"`         |
-| opacity           | float   | **Optional** | Sets opacity (0..1) for the "opened bars"   |      `0.3`          |
+| opacity           | float   | **Optional** | Sets opacity (0..1) for the Icon open bars  | `0.3`               |
 | style             | object  | **Optional** | CSS style properties to apply               |                     | 
