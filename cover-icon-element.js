@@ -16,7 +16,9 @@ class CoverIconElement extends HTMLElement {
           const position = stateObj.attributes.current_position;
           const state = stateObj.state;
 
-          if (state === "closing") {
+          if (state === "unavailable") {
+            image = CoverIconElement.dataImageError(this._config.color);
+          } else if (state === "closing") {
             image = CoverIconElement.dataImageClosing(this._config.color);
           } else if(state === "opening") {
             image = CoverIconElement.dataImageOpening(this._config.color);
