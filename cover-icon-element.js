@@ -95,6 +95,6 @@ CoverIconElement.dataImageClosing = (color) => `data:image/svg+xml,%3Csvg xmlns=
 
 CoverIconElement.dataImageOpening = (color) => `data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='${encodeURIComponent(color)}' preserveAspectRatio='xMidYMid meet' focusable='false' viewBox='0 0 24 24'%3E%3Cg%3E%3Cpath d='M3 4H21V8H19V20H17V8H7V20H5V8H3V4'%3E%3C/path%3E%3Cpath d='M10 19 H14 V13 H16 L12 9 L8 13 H10 Z' opacity='0.7'%3E%3C/path%3E%3C/g%3E%3C/svg%3E`;
 
-CoverIconElement.dataImageError = (color) => `data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" role="img" width="1em" height="1em" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24"><path d="M2 4h18v4h-2v12h-2V8H6v12H4V8H2V4m5 5h8v2H7V9m0 3h8v2H7v-2m13 7v-2h2v2h-2m0-4v-5h2v5h-2z" fill="${encodeURIComponent(color)}"/></svg>`;
+CoverIconElement.dataImageError = (color) => `data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='${encodeURIComponent(color)}' preserveAspectRatio='xMidYMid meet' focusable='false' viewBox='0 0 24 24'%3E%3Cg%3E%3Cpath d='M3 4H21V8H19V20H17V8H7V20H5V8H3V4'%3E%3C/path%3E%3Cpath d='M11 9.5 H13 V15 H 11 Z' opacity='0.9'%3E%3C/path%3E%3Cpath d='M11 16 H13 V18 H 11 Z' opacity='0.9'%3E%3C/path%3E%3C/g%3E%3C/svg%3E`;
 
 customElements.define('cover-icon-element', CoverIconElement);
