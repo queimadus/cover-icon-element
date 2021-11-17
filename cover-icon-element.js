@@ -8,7 +8,7 @@ class CoverIconElement extends HTMLElement {
 
   setImage(hass) {
     if (hass && this._config) {
-      let image = CoverIconElement.dataImage4(this._config.color, this._config.opacity);
+      let image = CoverIconElement.dataImageError(this._config.color);
 
       if (this._config.entity) {
         const stateObj = hass.states[this._config.entity];
@@ -30,6 +30,8 @@ class CoverIconElement extends HTMLElement {
             image = CoverIconElement.dataImage2(this._config.color, this._config.opacity);
           } else if (position >= this._config.breakpoints[0]) {
             image = CoverIconElement.dataImage3(this._config.color, this._config.opacity);
+          } else {
+            image = CoverIconElement.dataImage4(this._config.color, this._config.opacity);
           }
         }
       }
