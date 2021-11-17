@@ -2,12 +2,13 @@ class CoverIconElement extends HTMLElement {
 
   defaults = {
     breakpoints: [1, 50, 75, 100],
-    color: "#4d4d4d"
+    color: "#4d4d4d",
+    opacity: 0.3
   }
 
   setImage(hass) {
     if (hass && this._config) {
-      let image = CoverIconElement.dataImage4(this._config.color);
+      let image = CoverIconElement.dataImage4(this._config.color, this._config.opacity);
 
       if (this._config.entity) {
         const stateObj = hass.states[this._config.entity];
@@ -15,18 +16,20 @@ class CoverIconElement extends HTMLElement {
           const position = stateObj.attributes.current_position;
           const state = stateObj.state;
 
-          if (state === "closing") {
+          if (state === "unavailable") {
+            image = CoverIconElement.dataImageError(this._config.color);
+          } else if (state === "closing") {
             image = CoverIconElement.dataImageClosing(this._config.color);
           } else if(state === "opening") {
             image = CoverIconElement.dataImageOpening(this._config.color);
           } else if (position >= this._config.breakpoints[3]) {
-            image = CoverIconElement.dataImage0(this._config.color);
+            image = CoverIconElement.dataImage0(this._config.color, this._config.opacity);
           } else if (position >= this._config.breakpoints[2]) {
-            image = CoverIconElement.dataImage1(this._config.color);
+            image = CoverIconElement.dataImage1(this._config.color, this._config.opacity);
           } else if (position >= this._config.breakpoints[1]) {
-            image = CoverIconElement.dataImage2(this._config.color);
+            image = CoverIconElement.dataImage2(this._config.color, this._config.opacity);
           } else if (position >= this._config.breakpoints[0]) {
-            image = CoverIconElement.dataImage3(this._config.color);
+            image = CoverIconElement.dataImage3(this._config.color, this._config.opacity);
           }
         }
       }
@@ -78,18 +81,20 @@ class CoverIconElement extends HTMLElement {
   }
 }
 
-CoverIconElement.dataImage4 = (color) => `data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='${encodeURIComponent(color)}' preserveAspectRatio='xMidYMid meet' focusable='false' viewBox='0 0 24 24'%3E%3Cg%3E%3Cpath d='M3 4H21V8H19V20H17V8H7V20H5V8H3V4'%3E%3C/path%3E%3Cpath d='M3 9H16V11H8V9' opacity='1'%3E%3C/path%3E%3Cpath d='M3 12H16V14H8V12' opacity='1'%3E%3C/path%3E%3Cpath d='M3 15H16V17H8V15' opacity='1'%3E%3C/path%3E%3Cpath d='M3 18H16V20H8V18' opacity='1'%3E%3C/path%3E%3C/g%3E%3C/svg%3E`;
+CoverIconElement.dataImage4 = (color, opacity) => `data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='${encodeURIComponent(color)}' preserveAspectRatio='xMidYMid meet' focusable='false' viewBox='0 0 24 24'%3E%3Cg%3E%3Cpath d='M3 4H21V8H19V20H17V8H7V20H5V8H3V4'%3E%3C/path%3E%3Cpath d='M3 9H16V11H8V9' opacity='1'%3E%3C/path%3E%3Cpath d='M3 12H16V14H8V12' opacity='1'%3E%3C/path%3E%3Cpath d='M3 15H16V17H8V15' opacity='1'%3E%3C/path%3E%3Cpath d='M3 18H16V20H8V18' opacity='1'%3E%3C/path%3E%3C/g%3E%3C/svg%3E`;
 
-CoverIconElement.dataImage3 = (color) => `data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='${encodeURIComponent(color)}' preserveAspectRatio='xMidYMid meet' focusable='false' viewBox='0 0 24 24'%3E%3Cg%3E%3Cpath d='M3 4H21V8H19V20H17V8H7V20H5V8H3V4'%3E%3C/path%3E%3Cpath d='M3 9H16V11H8V9' opacity='1'%3E%3C/path%3E%3Cpath d='M3 12H16V14H8V12' opacity='1'%3E%3C/path%3E%3Cpath d='M3 15H16V17H8V15' opacity='1'%3E%3C/path%3E%3Cpath d='M3 18H16V20H8V18' opacity='0.3'%3E%3C/path%3E%3C/g%3E%3C/svg%3E`;
+CoverIconElement.dataImage3 = (color, opacity) => `data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='${encodeURIComponent(color)}' preserveAspectRatio='xMidYMid meet' focusable='false' viewBox='0 0 24 24'%3E%3Cg%3E%3Cpath d='M3 4H21V8H19V20H17V8H7V20H5V8H3V4'%3E%3C/path%3E%3Cpath d='M3 9H16V11H8V9' opacity='1'%3E%3C/path%3E%3Cpath d='M3 12H16V14H8V12' opacity='1'%3E%3C/path%3E%3Cpath d='M3 15H16V17H8V15' opacity='1'%3E%3C/path%3E%3Cpath d='M3 18H16V20H8V18' opacity='${encodeURIComponent(opacity)}'%3E%3C/path%3E%3C/g%3E%3C/svg%3E`;
 
-CoverIconElement.dataImage2 = (color) => `data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='${encodeURIComponent(color)}' preserveAspectRatio='xMidYMid meet' focusable='false' viewBox='0 0 24 24'%3E%3Cg%3E%3Cpath d='M3 4H21V8H19V20H17V8H7V20H5V8H3V4'%3E%3C/path%3E%3Cpath d='M3 9H16V11H8V9' opacity='1'%3E%3C/path%3E%3Cpath d='M3 12H16V14H8V12' opacity='1'%3E%3C/path%3E%3Cpath d='M3 15H16V17H8V15' opacity='0.3'%3E%3C/path%3E%3Cpath d='M3 18H16V20H8V18' opacity='0.3'%3E%3C/path%3E%3C/g%3E%3C/svg%3E`;
+CoverIconElement.dataImage2 = (color, opacity) => `data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='${encodeURIComponent(color)}' preserveAspectRatio='xMidYMid meet' focusable='false' viewBox='0 0 24 24'%3E%3Cg%3E%3Cpath d='M3 4H21V8H19V20H17V8H7V20H5V8H3V4'%3E%3C/path%3E%3Cpath d='M3 9H16V11H8V9' opacity='1'%3E%3C/path%3E%3Cpath d='M3 12H16V14H8V12' opacity='1'%3E%3C/path%3E%3Cpath d='M3 15H16V17H8V15' opacity='${encodeURIComponent(opacity)}'%3E%3C/path%3E%3Cpath d='M3 18H16V20H8V18' opacity='${encodeURIComponent(opacity)}'%3E%3C/path%3E%3C/g%3E%3C/svg%3E`;
 
-CoverIconElement.dataImage1 = (color) => `data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='${encodeURIComponent(color)}' preserveAspectRatio='xMidYMid meet' focusable='false' viewBox='0 0 24 24'%3E%3Cg%3E%3Cpath d='M3 4H21V8H19V20H17V8H7V20H5V8H3V4'%3E%3C/path%3E%3Cpath d='M3 9H16V11H8V9' opacity='1'%3E%3C/path%3E%3Cpath d='M3 12H16V14H8V12' opacity='0.3'%3E%3C/path%3E%3Cpath d='M3 15H16V17H8V15' opacity='0.3'%3E%3C/path%3E%3Cpath d='M3 18H16V20H8V18' opacity='0.3'%3E%3C/path%3E%3C/g%3E%3C/svg%3E`;
+CoverIconElement.dataImage1 = (color, opacity) => `data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='${encodeURIComponent(color)}' preserveAspectRatio='xMidYMid meet' focusable='false' viewBox='0 0 24 24'%3E%3Cg%3E%3Cpath d='M3 4H21V8H19V20H17V8H7V20H5V8H3V4'%3E%3C/path%3E%3Cpath d='M3 9H16V11H8V9' opacity='1'%3E%3C/path%3E%3Cpath d='M3 12H16V14H8V12' opacity='${encodeURIComponent(opacity)}'%3E%3C/path%3E%3Cpath d='M3 15H16V17H8V15' opacity='${encodeURIComponent(opacity)}'%3E%3C/path%3E%3Cpath d='M3 18H16V20H8V18' opacity='${encodeURIComponent(opacity)}'%3E%3C/path%3E%3C/g%3E%3C/svg%3E`;
 
-CoverIconElement.dataImage0 = (color) => `data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='${encodeURIComponent(color)}' preserveAspectRatio='xMidYMid meet' focusable='false' viewBox='0 0 24 24'%3E%3Cg%3E%3Cpath d='M3 4H21V8H19V20H17V8H7V20H5V8H3V4'%3E%3C/path%3E%3Cpath d='M3 9H16V11H8V9' opacity='0.3'%3E%3C/path%3E%3Cpath d='M3 12H16V14H8V12' opacity='0.3'%3E%3C/path%3E%3Cpath d='M3 15H16V17H8V15' opacity='0.3'%3E%3C/path%3E%3Cpath d='M3 18H16V20H8V18' opacity='0.3'%3E%3C/path%3E%3C/g%3E%3C/svg%3E`;
+CoverIconElement.dataImage0 = (color, opacity) => `data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='${encodeURIComponent(color)}' preserveAspectRatio='xMidYMid meet' focusable='false' viewBox='0 0 24 24'%3E%3Cg%3E%3Cpath d='M3 4H21V8H19V20H17V8H7V20H5V8H3V4'%3E%3C/path%3E%3Cpath d='M3 9H16V11H8V9' opacity='${encodeURIComponent(opacity)}'%3E%3C/path%3E%3Cpath d='M3 12H16V14H8V12' opacity='${encodeURIComponent(opacity)}'%3E%3C/path%3E%3Cpath d='M3 15H16V17H8V15' opacity='${encodeURIComponent(opacity)}'%3E%3C/path%3E%3Cpath d='M3 18H16V20H8V18' opacity='${encodeURIComponent(opacity)}'%3E%3C/path%3E%3C/g%3E%3C/svg%3E`;
 
 CoverIconElement.dataImageClosing = (color) => `data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='${encodeURIComponent(color)}' preserveAspectRatio='xMidYMid meet' focusable='false' viewBox='0 0 24 24'%3E%3Cg%3E%3Cpath d='M3 4H21V8H19V20H17V8H7V20H5V8H3V4'%3E%3C/path%3E%3Cpath d='M10 9 H14 V15 H16 L12 19 L 8 15 H10 Z' opacity='0.7'%3E%3C/path%3E%3C/g%3E%3C/svg%3E`;
 
 CoverIconElement.dataImageOpening = (color) => `data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='${encodeURIComponent(color)}' preserveAspectRatio='xMidYMid meet' focusable='false' viewBox='0 0 24 24'%3E%3Cg%3E%3Cpath d='M3 4H21V8H19V20H17V8H7V20H5V8H3V4'%3E%3C/path%3E%3Cpath d='M10 19 H14 V13 H16 L12 9 L8 13 H10 Z' opacity='0.7'%3E%3C/path%3E%3C/g%3E%3C/svg%3E`;
+
+CoverIconElement.dataImageError = (color) => `data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" role="img" width="1em" height="1em" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24"><path d="M2 4h18v4h-2v12h-2V8H6v12H4V8H2V4m5 5h8v2H7V9m0 3h8v2H7v-2m13 7v-2h2v2h-2m0-4v-5h2v5h-2z" fill="${encodeURIComponent(color)}"/></svg>`;
 
 customElements.define('cover-icon-element', CoverIconElement);
